@@ -19,11 +19,18 @@ const quotes = [
 ];
 
 console.log(quotes);
+
 /***
  * `getRandomQuote` function
 ***/
 
+function getRandomQuote (quoteArr) {
+  let randomNum = Math.floor(Math.random() * quoteArr.length);
+  console.log(`randomNum is: ${randomNum}`);
+  return quoteArr[randomNum];
+}
 
+console.log(getRandomQuote(quotes));
 
 /***
  * `printQuote` function
