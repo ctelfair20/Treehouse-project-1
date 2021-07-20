@@ -15,10 +15,10 @@ const quotes = [
   {quote: 'If you look at what you have in life, you\'ll always have more. If you look at what you don\'t have in life, you\'ll never have enough.', author: 'Oprah Winfrey'},
   {quote: 'You will face many defeats in life, but never let yourself be defeated.', author: 'Maya Angelou'},
   {quote: 'Never let the fear of striking out keep you from playing the game.', author: 'Babe Ruth'},
-  {quote: 'I have decided to stick with love. . . . Hate is too great a burden to bear.', author: 'Martin Luther King Jr'},
-]
+  {quote: 'I have decided to stick with love. . . . Hate is too great a burden to bear.', author: 'Martin Luther King Jr', citation: "Where Do We Go From Here?", year: '1967'}
+];
 
-
+console.log(quotes);
 /***
  * `getRandomQuote` function
 ***/
@@ -36,4 +36,4 @@ const quotes = [
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// document.getElementById('load-quote').addEventListener("click", printQuote, false);
