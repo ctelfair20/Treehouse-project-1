@@ -23,25 +23,38 @@ const quotes = [
  * `getRandomQuote` function
 ***/
 
-function getRandomQuote (quoteArr) {
+/* This function should generate a random number between 0 and 4 and
+return the quote object whose index is equal to that random number from the quotes array */
+function getRandomQuote(quoteArr) {
+  // console.log(quoteArr);
   let randomNum = Math.floor(Math.random() * quoteArr.length);
-  console.log(`randomNum is: ${randomNum}`);
-  return quoteArr[randomNum];
+  // console.log(quoteArr.length);
+  let quoteObj = quoteArr[randomNum];
+  // console.log(quoteObj);
+  return quoteObj;
 }
 
-console.log(getRandomQuote(quotes));
+// console.log(getRandomQuote(quotes));
 
 /***
  * `printQuote` function
 ***/
 
+/* string to be printed to the browser whenever 
+the "show another quote" button is clicked". */
 let htmlString = ''
 
-function printQuote (quoteArr) {
-  let randomQuoteObj = getRandomQuote(quoteArr);
+/* The funnction should access a random quote from the quote array, 
+use string interpulation to grow the htmlString with information 
+from the random quote. */
+function printQuote() {
+  
+  let randomQuoteObj = getRandomQuote(quotes);
   console.log(randomQuoteObj);
+  console.log(randomQuoteObj.quote, randomQuoteObj.source);
   htmlString = `<p class="quote">${randomQuoteObj.quote}</p>
-  <pclass="source">${randomQuoteObj.source}`
+  <p class="source">${randomQuoteObj.source}`;
+  console.log(htmlString);
 
   if (randomQuoteObj.citation !== undefined ) {
     htmlString += `<span class="citation">${randomQuoteObj.citation}</span>`
@@ -55,12 +68,13 @@ function printQuote (quoteArr) {
   console.log(htmlString);
 }
 
-console.log(printQuote(quotes));
-
+/* access the node with the ID of 'quote-box' and add the value
+of htmlString to it allowing htmlString to be printed to the browser */
 document.getElementById('quote-box').innerHTML = htmlString; 
-/***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
-***/
+
+// /***
+//  * click event listener for the print quote button
+//  * DO NOT CHANGE THE CODE BELOW!!
+// ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
