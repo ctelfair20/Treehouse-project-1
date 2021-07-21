@@ -8,7 +8,9 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
- * `quotes` array 
+ * `quotes` array
+ * an array of objects
+ * each object contains at least two properties(quote and source) 
 ***/
 const quotes = [
   {quote: 'Life is what happens when you\'re busy making other plans', source: 'John Lennon'},
@@ -18,63 +20,48 @@ const quotes = [
   {quote: 'I have decided to stick with love. . . . Hate is too great a burden to bear.', source: 'Martin Luther King Jr', citation: "Where Do We Go From Here?", year: '1967'}
 ];
 
-
 /***
  * `getRandomQuote` function
+ * generate a random number between 0 and the index of the last item in the quotes array(4)
+ * returns the quote object from the quotes array whose index is equal to that random number
 ***/
 
-/* This function should generate a random number between 0 and 4 and
-return the quote object whose index is equal to that random number from the quotes array */
 function getRandomQuote(quoteArr) {
-  // console.log(quoteArr);
   let randomNum = Math.floor(Math.random() * quoteArr.length);
-  // console.log(quoteArr.length);
   let quoteObj = quoteArr[randomNum];
-  // console.log(quoteObj);
   return quoteObj;
 }
 
-// console.log(getRandomQuote(quotes));
-
 /***
  * `printQuote` function
+ * accesses a random quote from the quotes array 
+ * uses string interpulation to grow htmlString with information from the quotes array
+ * returns the completed htmlString and prints it to the browser
 ***/
 
-/* string to be printed to the browser whenever 
-the "show another quote" button is clicked". */
-let htmlString = ''
+let htmlString = '';
 
-/* The funnction should access a random quote from the quote array, 
-use string interpulation to grow the htmlString with information 
-from the random quote. */
 function printQuote() {
-  
   let randomQuoteObj = getRandomQuote(quotes);
-  console.log(randomQuoteObj);
-  console.log(randomQuoteObj.quote, randomQuoteObj.source);
+  
   htmlString = `<p class="quote">${randomQuoteObj.quote}</p>
   <p class="source">${randomQuoteObj.source}`;
-  console.log(htmlString);
 
   if (randomQuoteObj.citation !== undefined ) {
-    htmlString += `<span class="citation">${randomQuoteObj.citation}</span>`
+    htmlString += `<span class="citation">${randomQuoteObj.citation}</span>`;
   }
 
   if (randomQuoteObj.year !== undefined ) {
-    htmlString += `<span class="year">${randomQuoteObj.year}</span>`
+    htmlString += `<span class="year">${randomQuoteObj.year}</span>`;
   }
 
   htmlString += '</p>';
-  console.log(htmlString);
+  return document.getElementById('quote-box').innerHTML = htmlString;
 }
 
-/* access the node with the ID of 'quote-box' and add the value
-of htmlString to it allowing htmlString to be printed to the browser */
-document.getElementById('quote-box').innerHTML = htmlString; 
-
-// /***
-//  * click event listener for the print quote button
-//  * DO NOT CHANGE THE CODE BELOW!!
-// ***/
+/***
+ * click event listener for the print quote button
+ * DO NOT CHANGE THE CODE BELOW!!
+***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
